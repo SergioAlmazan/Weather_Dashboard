@@ -63,7 +63,7 @@ $(document).ready(function() {
 
         var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityToSearch + "&units=imperial&appid=2b4bde6e0df50ad6369df0cb0b71565d";
         var fiveDayWeatheruRL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityToSearch + "&units=imperial&cnt=40&appid=2b4bde6e0df50ad6369df0cb0b71565d";
-    
+
         console.log("fiveday forcast: " + fiveDayWeatheruRL)
     
         // This will call the api url to get the data
@@ -88,11 +88,55 @@ $(document).ready(function() {
                     url: currentUVIndexURL,
                     method: "GET"
                     }).then(function(UVresponse) {
-                        $("#currentUVIndex").text("UV Index: " + UVresponse.value);
+                        $("#curUVIndex").text("UV Index: " + UVresponse.value);
                     }); 
                 }); 
+                for(var i=0; i < 5 ; i++){
+
+                    var interation = 0
+                    interation = (8*i) + 6
+                    getForcast(interation, fiveDayWeatheruRL);
+            
+                }
+            
+            };
     
+        function getForcast(i, url){
+
+            var forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityToSearch + "&units=imperial&cnt=40&appid=2b4bde6e0df50ad6369df0cb0b71565d";
+
+
+             $.ajax({
+            url: forecast,
+            method: "GET",
+            }).then(function(response) {
+            
+            var dayWeatherImg = "http://openweathermap.org/img/wn/" + response.list[i].weather[0].icon + "@2x.png";
+            var dayDateString = moment.unix(response.list[i].dt).format("MM/DD/YYYY");
+                    
+            h5El.text(dayDateString)
+            imgEl.attr("src", dayWeatherImg);
+            pTempEl.html("Temp: " + response.list[i].main.temp + " &degF");
+            pHumidEl.text("Humidity: " + response.list[i].main.humidity + "%")
+            
+            cardBodyEl.append(h5El).append(imgEl).append(pTempEl).append(pHumidEl);
+            cardEl.append(cardBodyEl);
+            cardEl.clone().appendTo($("#forcast"))
+            
+            });
             }
+
+            if (SearchHistory == undefined || SearchHistory == null){
+                SearchHistory = ["Houston"];
+                localStorage.setItem("SearchHistory", JSON.stringify(SearchHistory));
+            }
+    
+        var cityListItem
+        cityToSearch = SearchHistory[0]
+    
+        getWeather();
+        
+        renderSearchHistory();
 
 
 
