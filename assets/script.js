@@ -59,6 +59,40 @@ $(document).ready(function() {
         }
     }
 
+    function getWeather(){
+
+        var currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityToSearch + "&units=imperial&appid=2b4bde6e0df50ad6369df0cb0b71565d";
+        var fiveDayWeatheruRL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityToSearch + "&units=imperial&cnt=40&appid=2b4bde6e0df50ad6369df0cb0b71565d";
+    
+        console.log("fiveday forcast: " + fiveDayWeatheruRL)
+    
+        // This will call the api url to get the data
+        $.ajax({
+            url: currentWeatherURL,
+            method: "GET"
+            }).then(function(response) {
+        
+                var currentWeatherImg = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
+                var dateString = moment.unix(response.dt).format("MM/DD/YYYY | h:mm a");
+    
+                //Data from the response to fill in the html
+                $("#city").text(response.name);        
+                $("#currweatherIcon").attr("src", currentWeatherImg);
+                $("#curDNT").text(dateString);
+                $("#curTemp").html("Tempurature: " + response.main.temp + " &degF");
+                $("#curHum").text("Humidity: " + response.main.humidity + "%");
+                $("#curWind").text("Wind Speed: " + response.wind.speed);
+                
+                var currentUVIndexURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + "5&lon=" + response.coord.lon + "&appid=2b4bde6e0df50ad6369df0cb0b71565d"
+                $.ajax({
+                    url: currentUVIndexURL,
+                    method: "GET"
+                    }).then(function(UVresponse) {
+                        $("#currentUVIndex").text("UV Index: " + UVresponse.value);
+                    }); 
+                }); 
+    
+            }
 
 
 
