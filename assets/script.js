@@ -88,7 +88,16 @@ $(document).ready(function() {
                     url: currentUVIndexURL,
                     method: "GET"
                     }).then(function(UVresponse) {
-                        $("#curUVIndex").text("UV Index: " + UVresponse.value);
+                        if (UVresponse.value >= 11) {
+                            $("#curUVIndex").attr('class', 'severe');
+                            $("#curUVIndex").text("UV Index: " + UVresponse.value);
+                        } else if (UVresponse.value >= 8) {
+                            $("#curUVIndex").attr('class', 'moderate');
+                            $("#curUVIndex").text("UV Index: " + UVresponse.value);
+                        } else if (UVresponse.value >= 3) {
+                            $("#curUVIndex").attr('class', 'good');
+                            $("#curUVIndex").text("UV Index: " + UVresponse.value);
+                        }
                     }); 
                 }); 
                 for(var i=0; i < 5 ; i++){

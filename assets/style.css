@@ -1,3 +1,73 @@
 :root{
     background-color: black;
 }
+
+  
+.jumbotron{
+    font-size: 40px;
+    color: #b6c2ce;
+    /* width: auto; */
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color: black;
+    padding: auto;
+}
+
+body{
+    margin-top: 78px;
+    background-color: black;
+}
+
+
+.card-body{
+    background-color: rgb(10, 10, 10);
+    border-color: blanchedalmond;
+    border-style: solid;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: blanchedalmond;
+
+}
+
+#currentWeather{
+    width: auto;
+}
+#spacer{
+    border-bottom: 3px solid #f8f9fa;
+}
+
+.card{
+    width: 100%;
+    background-color: rgb(59, 56, 56);
+    color: blanchedalmond;
+
+}
+
+.display-4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0; }
+
+h3{
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.list-group-item{
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+
+.good{
+    color:rgb(77, 77, 204);
+}
+
+.moderate{
+    color: orange;
+}
+
+.severe{
+    color: red;
+}
+
