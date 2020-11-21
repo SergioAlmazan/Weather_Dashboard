@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Weather Dashboard</h1>
+    </div>
+
+    <div class="row">
+
+        <!-- Search Bar -->
+        <div class="col-md-4 bg-light pb-3">
+
+            <div class="input-group my-3">
+                <input type="text" class="form-control" placeholder="Search for a City" id="citySearch">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="searchBtn">Search</button>
+                </div>
+            </div>
+
+            <!-- Search History List -->
+            <ul class="list-group" id="searchHist">
+            </ul>
+        </div>
+
+        <div class="col-md-8 m-0 p-0">
+
+            <!--Weather Content Current-->
+            <div class="row m-2">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title m-0" id="city">Search for a City</h2>
+                        <img src="" alt="Weather Icon" id="curWtherIcon"/>
+                        <h6 class="card-subtitle mb-2 text-muted" id="curDNT">Date: </h6>
+                        <p class="card-text" id="curTemp">Tempurature: </p>
+                        <p class="card-text" id="curHum">Humidity: </p>
+                        <p class="card-text" id="curWind">Wind Speed: </p>
+                        <p class="card-text" id="curUVIndex">UV Index:</p>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="mb-2" id="spacer"></div> 
+
+            <div class="row mx-2">
+                <h3 class="ml-3">5-Day Forcast:</h3>
+            </div>
+
+            <div class="row mx-2" id="forcast">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+
+</body>
+</html>
